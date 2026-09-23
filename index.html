@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="sw-KE">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Language" content="sw-KE">
+<link rel="icon" type="image/gif" href="https://www.json.org/favicon.png">
+<title>JSON (Kenyan Swahili Edition) 🇰🇪</title>
+<style>
+@font-face {
+    font-family: 'Programma';
+    font-weight: bold;
+    src: url('https://www.json.org/Programma-Bold.woff2') format('woff2');
+}
+body {
+    background-color: linen;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-family: serif;
+    color: black;
+}
+ul {
+    list-style: none;
+}
+hr {
+    background-color: black;
+    border: 0px;
+    color: black;
+    height: 2px;
+    padding: 0px;
+}
+div#box {
+    background-color: white;
+    border: 2pt solid black;
+    padding: 10px;
+}
+div#grammar {
+    padding-top: 1em;
+}
+div#grammar a:visited {
+    color: black;
+}
+div#spec {
+    display: grid;
+    gap: 2em;
+    grid-template-columns: 1.5fr 1fr;
+}
+@media (max-width: 900px) {
+    div#spec {
+        grid-template-columns: 1fr;
+    }
+}
+p.rule {
+    font-family: "Open Sans", Futura, "Gill Sans", Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    margin-left: 2em;
+    margin-right: 1em;
+    page-break-inside: avoid;
+    white-space: pre-line;
+    font-size: 13px;
+    line-height: 1.4;
+}
+code, pre, tt {
+    font-family: Programma, monospace;
+    font-size: 100%;
+    font-weight: bold;
+}
+small {
+    font-family: 'Century Schoolbook', serif;
+    font-size: 9pt;
+    font-style: italic;
+    margin-left: 2pt;
+    margin-right: 0.75pt;
+}
+a {
+    text-decoration: none;
+}
+a:link {
+    color: navy;
+}
+a:visited {
+    color: maroon;
+}
+a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+.diagram-box {
+    text-align: center;
+    margin: 1.5em 0;
+}
+.diagram-box img {
+    max-width: 100%;
+    height: auto;
+}
+.kenyan-badge {
+    background-color: #008751;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+</style>
+</head>
+<body>
+
+<table border="0" width="100%">
+  <tbody>
+    <tr>
+      <td align="center" valign="middle" width="160">
+        <img src="https://www.json.org/img/json160.gif" alt="JSON Logo" align="left" border="0" height="160" width="160">
+      </td>
+      <td align="center" valign="middle">
+        <div style="border: 2px solid black; padding: 15px; background-color: white; margin-left: 20px; margin-right: 0;">
+          <h1 align="center" style="margin: 0;">Utangulizi wa JSON</h1>
+          <div style="margin-top: 5px;"><span class="kenyan-badge">Tafsiri ya Kiswahili cha Kenya 🇰🇪</span> <small>Bila "Deep Translation"</small></div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+<div align="center">
+  <small>
+    Tafsiri ya asili inapatikana kwenye <a href="https://www.json.org/">json.org</a> kwa lugha 30+ duniani. Huu ni ukurasa rasmi wa kwanza kwa lugha ya kawaida ya Kenya.
+  </small>
+</div>
+<hr>
+<div align="center">
+  <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-404/"><b>ECMA-404: The JSON Data Interchange Standard</b></a>.
+</div>
+<hr>
+
+<div id="spec">
+  <!-- Left Column: Kenyan Swahili Explanation -->
+  <div id="text">
+    <p><b>JSON</b> (JavaScript Object Notation) ni lightweight data-interchange format. Ni rahisi sana kwa mtu kusoma na kuandika JSON, na pia ni rahisi kwa mashine (computers) kui-parse na kui-generate. JSON ni subset ya <b>JavaScript Programming Language Standard (ECMA-262 3rd Edition - December 1999)</b>. JSON ni text format ambayo haitegemei programming language yoyote (<b>completely language independent</b>), lakini inatumia styles and rules (conventions) zinazofahamika virahisi na language programmers za <b>C-family</b> (kama vile C, C++, C#, Java, JavaScript, Perl, Python, na zingine nyingi). Kwa sababu ya hiyo zinaifanya JSON kuwa language bora zaidi kwa kutransfer data kati ya mifumo tofauti (ideal data-interchange language).</p>
+
+    <p>JSON imejengwa juu ya structures mbili pekee ambazo ni universal (zinapatikana kwa kila language duniani):</p>
+    <ul>
+      <li>• <b>Collection of name/value pairs:</b> Kwa different programming languages, hii structure inafahamika kama <i>object</i>, record, struct, dictionary, hash table, keyed list, au associative array.</li>
+      <li>• <b>Ordered list of values:</b> Kwa programming languages nyingi, hii structure inafahamika kama <i>array</i>, vector, list, au sequence.</li>
+    </ul>
+
+    <p>Hizi ni universal data structures. Karibu programming languages zote za kisasa zinazisupport in one way or the other. Kwa hivyo inamake sense kabisa kwamba data format inayotumiwa kusafirisha data kati ya languages tofauti pia ijengwe juu ya structures hizi hizi mbili.</p>
+
+    <p>Ndani ya JSON, data inachukua mifumo hii:</p>
+
+    <p><i>Object</i> ni unordered collection (unordered set) ya <b>name/value pairs</b>. Object inaanza na <tt>{</tt><small>left brace</small> na inaishia na <tt>}</tt><small>right brace</small>. Kila jina (key) inafuatiwa na alama ya <tt>:</tt><small>colon</small> na hizo name/value pairs zinasaparestiwa kwa kutumia <tt>,</tt><small>comma</small>.</p>
+
+    <div class="diagram-box">
+      <img src="https://www.json.org/img/object.png" alt="JSON Object Diagram">
+    </div>
+
+    <p><i>Array</i> ni collection iliyopangwa (ordered collection) ya <b>values</b>. Array inaanza na <tt>[</tt><small>left bracket</small> na inaishia na <tt>]</tt><small>right bracket</small>. Values zote ndani yake zinasaparestiwa na <tt>,</tt><small>comma</small>.</p>
+
+    <div class="diagram-box">
+      <img src="https://www.json.org/img/array.png" alt="JSON Array Diagram">
+    </div>
+
+    <p><i>Value</i> inaweza kuwa <i>string</i> ndani ya double quotes, au <i>number</i>, au <tt>true</tt> au <tt>false</tt> (boolean), au <tt>null</tt> (Empty Debe), au <i>object</i>, au <i>array</i>. Structures hizi zinaweza kuwekwa ndani ya nyingine (nested) kwa kiwango chochote unachotaka.</p>
+
+    <div class="diagram-box">
+      <img src="https://www.json.org/img/value.png" alt="JSON Value Diagram">
+    </div>
+
+    <p><i>String</i> ni sequence ya letters either zero au zaidi za <b>Unicode</b>, zikiwa zimeenclosiwa ndani ya double quotes <tt>""</tt>, zikitumia backslash escapes. Letter moja inawakilishwa kama single character string. String ya JSON inafanana sana na string ya C au Java.</p>
+
+    <div class="diagram-box">
+      <img src="https://www.json.org/img/string.png" alt="JSON String Diagram">
+    </div>
+
+    <p><i>Number</i> inafanana sana na namba ya kawaida ya C au Java, isipokuwa number system ya <b>octal</b> na <b>hexadecimal</b> haitumiwi hapa:</p>
+
+    <div class="diagram-box">
+      <img src="https://www.json.org/img/number.png" alt="JSON Number Diagram">
+    </div>
+
+    <p><i>Whitespace</i> (nafasi tupu) kama vile space, tab, newline, au carriage return zinaweza kuwekwa katikati ya token yoyote bila kubadilisha maana ya data. Ukiondoa maelezo machache ya encoding, hayo ndiyo yanayoelezea lugha nzima ya JSON kikamilifu.</p>
+
+    <div class="diagram-box">
+      <img src="https://www.json.org/img/whitespace.png" alt="JSON Whitespace Diagram">
+    </div>
+  </div>
+
+  <!-- Right Column: Formal McKeeman Grammar -->
+  <div id="grammar">
+    <div id="box">
+      <h3 style="margin-top: 0; text-align: center; border-bottom: 1px solid #ccc; padding-bottom: 5px;">JSON McKeeman Grammar</h3>
+      
+      <p class="rule"><b>json</b>
+   element</p>
+
+      <p class="rule"><b>value</b>
+   object
+   array
+   string
+   number
+   <code>"true"</code>
+   <code>"false"</code>
+   <code>"null"</code></p>
+
+      <p class="rule"><b>object</b>
+   <code>'{'</code> ws <code>'}'</code>
+   <code>'{'</code> members <code>'}'</code></p>
+
+      <p class="rule"><b>members</b>
+   member
+   member <code>','</code> members</p>
+
+      <p class="rule"><b>member</b>
+   ws string ws <code>':'</code> element</p>
+
+      <p class="rule"><b>array</b>
+   <code>'['</code> ws <code>']'</code>
+   <code>'['</code> elements <code>']'</code></p>
+
+      <p class="rule"><b>elements</b>
+   element
+   element <code>','</code> elements</p>
+
+      <p class="rule"><b>element</b>
+   ws value ws</p>
+
+      <p class="rule"><b>string</b>
+   <code>'"'</code> characters <code>'"'</code></p>
+
+      <p class="rule"><b>characters</b>
+   <code>""</code>
+   character characters</p>
+
+      <p class="rule"><b>character</b>
+   <code>'0020'</code> . <code>'10FFFF'</code> - <code>'"'</code> - <code>'\'</code>
+   <code>'\'</code> escape</p>
+
+      <p class="rule"><b>escape</b>
+   <code>'"'</code>
+   <code>'\'</code>
+   <code>'/'</code>
+   <code>'b'</code>
+   <code>'f'</code>
+   <code>'n'</code>
+   <code>'r'</code>
+   <code>'t'</code>
+   <code>'u'</code> hex hex hex hex</p>
+
+      <p class="rule"><b>hex</b>
+   digit
+   <code>'A'</code> . <code>'F'</code>
+   <code>'a'</code> . <code>'f'</code></p>
+
+      <p class="rule"><b>number</b>
+   integer fraction exponent</p>
+
+      <p class="rule"><b>integer</b>
+   digit
+   onenine digits
+   <code>'-'</code> digit
+   <code>'-'</code> onenine digits</p>
+
+      <p class="rule"><b>digits</b>
+   digit
+   digit digits</p>
+
+      <p class="rule"><b>digit</b>
+   <code>'0'</code>
+   onenine</p>
+
+      <p class="rule"><b>onenine</b>
+   <code>'1'</code> . <code>'9'</code></p>
+
+      <p class="rule"><b>fraction</b>
+   <code>""</code>
+   <code>'.'</code> digits</p>
+
+      <p class="rule"><b>exponent</b>
+   <code>""</code>
+   <code>'E'</code> sign digits
+   <code>'e'</code> sign digits</p>
+
+      <p class="rule"><b>sign</b>
+   <code>""</code>
+   <code>'+'</code>
+   <code>'-'</code></p>
+
+      <p class="rule"><b>ws</b>
+   <code>""</code>
+   <code>'0020'</code> ws
+   <code>'000A'</code> ws
+   <code>'000D'</code> ws
+   <code>'0009'</code> ws</p>
+    </div>
+  </div>
+</div>
+
+<hr>
+<div align="center" style="margin-top: 20px; font-size: 13px;">
+  <p>Imejengwa kwa heshima ya kazi ya asili ya <b>Douglas Crockford</b> na standard ya kimataifa ya <b>ECMA-404</b>.</p>
+  <p>Mradi wa Wazi (Open Source) chini ya Leseni ya <b>MIT License</b>.</p>
+</div>
+
+</body>
+</html>
